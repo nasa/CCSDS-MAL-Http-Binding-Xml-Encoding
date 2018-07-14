@@ -150,7 +150,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
     @Test
     public void encoderTest5() throws Exception {
         UOctet original = new UOctet((short) 0);
-        UOctet original1 = new UOctet(Short.MAX_VALUE);
+        UOctet original1 = new UOctet((short) 255);
         UOctet original2 = new UOctet((short) 23);
         encoder.encodeElement(original);
         encoder.encodeElement(original1);
@@ -158,7 +158,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         encoder.close();
         decoder = new XmlDecoder(new ByteArrayInputStream(message.toByteArray()));
         Assert.assertEquals(XML_BEGINNING +
-                "<UOctet><UOctet>0</UOctet></UOctet><UOctet><UOctet>32767</UOctet></UOctet><UOctet><UOctet>23</UOctet></UOctet></malxml:Body>", new String(message.toByteArray()));
+                "<UOctet><UOctet>0</UOctet></UOctet><UOctet><UOctet>255</UOctet></UOctet><UOctet><UOctet>23</UOctet></UOctet></malxml:Body>", new String(message.toByteArray()));
         UOctet decoded = decoder.decodeUOctet();
         UOctet decoded1 = decoder.decodeUOctet();
         UOctet decoded2 = (UOctet) decoder.decodeAttribute();
@@ -167,7 +167,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertEquals(original2, decoded2);
         }
 
-    @Test        
+    @Test
     public void encoderTest6() throws MALException {
         Double original = null;
         thrown.expect(MALException.class);
@@ -186,7 +186,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertEquals(original, decoded);
         }
 
-    @Test        
+    @Test
     public void encoderTest8() throws MALException {
         String original = null;
         thrown.expect(MALException.class);
@@ -217,14 +217,14 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertTrue(original.equals(decoded));
         }
 
-    @Test        
+    @Test
     public void encoderTest9_2() throws Exception {
         URI original = new URI();
         thrown.expect(MALException.class);
         encoder.encodeElement(original);
     }
 
-    @Test        
+    @Test
     public void encoderTest10() throws MALException {
         URI original = new URI(null);
         thrown.expect(MALException.class);
@@ -267,7 +267,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertTrue(original.equals(decoded));
         }
 
-    @Test        
+    @Test
     public void encoderTest14() throws MALException {
         Duration original = null;
         thrown.expect(MALException.class);
@@ -338,7 +338,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertTrue(original.equals(decoded));
     }
 
-    @Test        
+    @Test
     public void encoderTest19_1() throws MALException {
         Identifier original = new Identifier(null);
         thrown.expect(MALException.class);
@@ -417,7 +417,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         Assert.assertEquals(original3, decoded3);
         }
 
-    @Test        
+    @Test
     public void encoderTest25() throws MALException {
         Integer original = null;
         thrown.expect(MALException.class);
@@ -427,7 +427,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
     @Test
     public void encoderTest26() throws Exception {
         UShort original = new UShort(0);
-        UShort original1 = new UShort(Integer.MAX_VALUE);
+        UShort original1 = new UShort(65535);
         UShort original2 = new UShort((short) 23);
         encoder.encodeElement(original);
         encoder.encodeElement(original1);
@@ -435,7 +435,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         encoder.close();
         decoder = new XmlDecoder(new ByteArrayInputStream(message.toByteArray()));
         Assert.assertEquals(XML_BEGINNING +
-                "<UShort><UShort>0</UShort></UShort><UShort><UShort>2147483647</UShort></UShort><UShort><UShort>23</UShort></UShort></malxml:Body>", new String(message.toByteArray()));
+                "<UShort><UShort>0</UShort></UShort><UShort><UShort>65535</UShort></UShort><UShort><UShort>23</UShort></UShort></malxml:Body>", new String(message.toByteArray()));
         UShort decoded = decoder.decodeUShort();
         UShort decoded1 = decoder.decodeUShort();
         UShort decoded2 = (UShort) decoder.decodeAttribute();
@@ -447,7 +447,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
     @Test
     public void encoderTest27() throws Exception {
         UInteger original = new UInteger( 0);
-        UInteger original1 = new UInteger(Long.MAX_VALUE);
+        UInteger original1 = new UInteger(4294967295L);
         UInteger original2 = new UInteger(23);
         encoder.encodeElement(original);
         encoder.encodeElement(original1);
@@ -455,7 +455,7 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
         encoder.close();
         decoder = new XmlDecoder(new ByteArrayInputStream(message.toByteArray()));
         Assert.assertEquals(XML_BEGINNING +
-                "<UInteger><UInteger>0</UInteger></UInteger><UInteger><UInteger>9223372036854775807</UInteger></UInteger><UInteger><UInteger>23</UInteger></UInteger></malxml:Body>", new String(message.toByteArray()));
+                "<UInteger><UInteger>0</UInteger></UInteger><UInteger><UInteger>4294967295</UInteger></UInteger><UInteger><UInteger>23</UInteger></UInteger></malxml:Body>", new String(message.toByteArray()));
         UInteger decoded = decoder.decodeUInteger();
         UInteger decoded1 = decoder.decodeUInteger();
         UInteger decoded2 = (UInteger) decoder.decodeAttribute();
@@ -467,13 +467,13 @@ public class EncoderAttributeTest extends AbstractEncoderTest {
     @Test
     public void encoderTest28() throws Exception {
         ULong original = new ULong(new BigInteger("0"));
-        ULong original1 = new ULong(new BigInteger("1234567898765432123456789876543212345678987654321"));
+        ULong original1 = new ULong(new BigInteger("18446744073709551615"));
         encoder.encodeElement(original);
         encoder.encodeElement(original1);
         encoder.close();
         decoder = new XmlDecoder(new ByteArrayInputStream(message.toByteArray()));
         Assert.assertEquals(XML_BEGINNING +
-                "<ULong><ULong>0</ULong></ULong><ULong><ULong>1234567898765432123456789876543212345678987654321</ULong></ULong></malxml:Body>", new String(message.toByteArray()));
+                "<ULong><ULong>0</ULong></ULong><ULong><ULong>18446744073709551615</ULong></ULong></malxml:Body>", new String(message.toByteArray()));
         ULong decoded = decoder.decodeULong();
         ULong decoded1 = (ULong) decoder.decodeAttribute();
         Assert.assertEquals(original, decoded);

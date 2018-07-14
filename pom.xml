@@ -17,7 +17,7 @@
     <groupId>gov.nasa.ccsds.mal</groupId>
     <artifactId>CCSDS_MAL_HTTP</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0.1</version>
 
     <name>JPL MAL HTTP</name>
     <description>Top Level POM for encoding and transporting modules of HTTP and XML</description>
@@ -32,9 +32,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <ccsds.mal.encode.http.version>1.0</ccsds.mal.encode.http.version>
-        <ccsds.mal.transport.http.version>1.0</ccsds.mal.transport.http.version>
-        <ccsds.mal.header.http.version>1.0</ccsds.mal.header.http.version>
+        <ccsds.mal.encode.http.version>1.0.1</ccsds.mal.encode.http.version>
+        <ccsds.mal.transport.http.version>1.0.1</ccsds.mal.transport.http.version>
+        <ccsds.mal.header.http.version>1.0.1</ccsds.mal.header.http.version>
         <assembly.mainClass></assembly.mainClass>
     </properties>
 
@@ -75,7 +75,7 @@
             <dependency>
                 <groupId>int.esa.ccsds.mo</groupId>
                 <artifactId>API_MAL</artifactId>
-                <version>1.2</version>
+                <version>1.7</version>
             </dependency>
 
             <dependency>
@@ -93,25 +93,25 @@
             <dependency>
                 <groupId>int.esa.ccsds.mo</groupId>
                 <artifactId>TRANSPORT_GEN</artifactId>
-                <version>1.1.4</version>
+                <version>1.7</version>
             </dependency>
 
             <dependency>
                 <groupId>int.esa.ccsds.mo</groupId>
                 <artifactId>ENCODING_GEN</artifactId>
-                <version>1.0.4</version>
+                <version>1.7</version>
             </dependency>
 
             <dependency>
                 <groupId>int.esa.ccsds.mo</groupId>
                 <artifactId>ENCODING_STRING</artifactId>
-                <version>1.0.4</version>
+                <version>1.7</version>
             </dependency>
 
             <dependency>
                 <groupId>int.esa.ccsds.mo</groupId>
                 <artifactId>ENCODING_BINARY</artifactId>
-                <version>1.0.5</version>
+                <version>1.7</version>
             </dependency>
 
             <dependency>

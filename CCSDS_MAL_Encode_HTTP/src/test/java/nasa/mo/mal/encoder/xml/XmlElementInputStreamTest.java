@@ -119,7 +119,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest04() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger>" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
         header.setIsErrorMessage(true);
@@ -129,7 +129,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALOperation operation = new MALSendOperation(uShort, identifier, true, uShort, stage);
         MALEncodingContext context = new MALEncodingContext(header, operation, 0,
                 null, null);
-        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 4294967295L);
     }
 
     /**
@@ -140,7 +140,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest05() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
         header.setIsErrorMessage(true);
@@ -151,7 +151,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
                 null, null);
 
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 4294967295L);
     }
 
     /**
@@ -187,7 +187,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest07() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger>" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
         header.setIsErrorMessage(false);
@@ -198,7 +198,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALOperation operation = new MALSendOperation(uShort, identifier, true, uShort, stage);
         MALEncodingContext context = new MALEncodingContext(header, operation, 1,
                 null, null);
-        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(new UInteger(), context)).getValue() == 4294967295L);
     }
 
     /**
@@ -209,7 +209,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest08() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
 
@@ -221,7 +221,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALEncodingContext context = new MALEncodingContext(header, operation, 1,
                 null, null);
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
     }
 
     /**
@@ -232,7 +232,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest09() throws Exception, IOException, ClassNotFoundException {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger><Element xsi:nil=\"true\"/>" +
+                "<UInteger>4294967295</UInteger></UInteger><Element xsi:nil=\"true\"/>" +
                 "</malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
@@ -246,10 +246,10 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALEncodingContext context = new MALEncodingContext(header, operation, 1,
                 null, null);
         Assert.assertEquals(XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger><Element xsi:nil=\"true\"/></malxml:Body>", new String(inputStream.getRemainingEncodedData()));
+                "<UInteger>4294967295</UInteger></UInteger><Element xsi:nil=\"true\"/></malxml:Body>", new String(inputStream.getRemainingEncodedData()));
 
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
 
         Assert.assertEquals(XML_BEGINNING + "<Element xsi:nil=\"true\"/></malxml:Body>", new String(inputStream.getRemainingEncodedData()));
     }
@@ -265,8 +265,8 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest09_1() throws Exception, IOException, ClassNotFoundException {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger><UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343235</UInteger></UInteger>" +
+                "<UInteger>4294967295</UInteger></UInteger><UInteger malxml:type=\"281474993487884\">" +
+                "<UInteger>4294967295</UInteger></UInteger>" +
                 "</malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
@@ -281,8 +281,8 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
                 null, null);
 
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343235L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
 
         Assert.assertEquals(XML_EMPTY_DOCUMENT, new String(inputStream.getRemainingEncodedData()));
     }
@@ -298,8 +298,8 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest09_2() throws Exception, IOException, ClassNotFoundException {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger><Element xsi:nil=\"true\"/><UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343235</UInteger></UInteger>" +
+                "<UInteger>4294967295</UInteger></UInteger><Element xsi:nil=\"true\"/><UInteger malxml:type=\"281474993487884\">" +
+                "<UInteger>4294967295</UInteger></UInteger>" +
                 "</malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
@@ -314,9 +314,9 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
                 null, null);
 
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
         Assert.assertTrue(inputStream.readElement(QoSLevel.ASSURED, context) == null);
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343235L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
         Assert.assertEquals(XML_EMPTY_DOCUMENT, new String(inputStream.getRemainingEncodedData()));
     }
 
@@ -331,7 +331,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest09_3() throws Exception, IOException, ClassNotFoundException {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger><Element xsi:nil=\"true\"/>" +
+                "<UInteger>4294967295</UInteger></UInteger><Element xsi:nil=\"true\"/>" +
                 "</malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
@@ -346,7 +346,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
                 null, null);
 
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
         Assert.assertTrue(inputStream.readElement(QoSLevel.ASSURED, context) == null);
         Assert.assertEquals(XML_EMPTY_DOCUMENT, new String(inputStream.getRemainingEncodedData()));
     }
@@ -412,7 +412,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest11() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
 
@@ -425,7 +425,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALEncodingContext context = new MALEncodingContext(header, operation, 1,
                 null, null);
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
     }
 
     /**
@@ -484,7 +484,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest14() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
 
@@ -497,7 +497,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALEncodingContext context = new MALEncodingContext(header, operation, 2,
                 null, null);
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
     }
 
     /**
@@ -508,7 +508,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
     public void readElementTest15() throws Exception {
         message = new ByteArrayOutputStream();
         stringToOutputStream(message, XML_BEGINNING + "<UInteger malxml:type=\"281474993487884\">" +
-                "<UInteger>23432343234</UInteger></UInteger></malxml:Body>");
+                "<UInteger>4294967295</UInteger></UInteger></malxml:Body>");
 
         inputStream = new XmlElementInputStream(new ByteArrayInputStream(message.toByteArray()));
 
@@ -521,7 +521,7 @@ public class XmlElementInputStreamTest extends AbstractEncoderTest {
         MALEncodingContext context = new MALEncodingContext(header, operation, 2,
                 null, null);
         MALContextFactory.getElementFactoryRegistry().registerElementFactory(Attribute.UINTEGER_SHORT_FORM, new UIntegerFactory());
-        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 23432343234L);
+        Assert.assertTrue(((UInteger) inputStream.readElement(null, context)).getValue() == 4294967295L);
     }
 
     /**

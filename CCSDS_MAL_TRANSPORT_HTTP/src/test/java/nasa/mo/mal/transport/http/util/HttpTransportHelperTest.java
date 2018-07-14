@@ -283,7 +283,7 @@ public class HttpTransportHelperTest {
         Assert.assertEquals(ResponseCodes.TOO_MANY_REQUEST, HttpTransportHelper.getStatusCodeFromMALError(MALHelper.TOO_MANY_ERROR_NUMBER));
         Assert.assertEquals(ResponseCodes.NOT_FOUND, HttpTransportHelper.getStatusCodeFromMALError(MALHelper.DESTINATION_UNKNOWN_ERROR_NUMBER));
         Assert.assertEquals(ResponseCodes.BAD_REQUEST, HttpTransportHelper.getStatusCodeFromMALError(MALHelper.BAD_ENCODING_ERROR_NUMBER));
-        Assert.assertEquals(ResponseCodes.INTERNAL_SERVER_ERROR, HttpTransportHelper.getStatusCodeFromMALError(new UInteger(Long.MAX_VALUE)));
+        Assert.assertEquals(ResponseCodes.INTERNAL_SERVER_ERROR, HttpTransportHelper.getStatusCodeFromMALError(new UInteger(4294967295L)));
     }
 
     /**

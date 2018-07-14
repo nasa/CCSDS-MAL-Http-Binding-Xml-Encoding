@@ -106,7 +106,7 @@ public class EncoderCompositeListTest extends AbstractEncoderTest {
         lists.get(5).add(new NamedValue(new Identifier("Test String 1"), new Time(7654567876544654563L)));
         lists.get(5).add(null);
         lists.get(5).add(null);
-        lists.get(5).add(new NamedValue(null, new UInteger(8765434567654345652L)));
+        lists.get(5).add(new NamedValue(null, new UInteger(4294967295L)));
         lists.get(5).add(new NamedValue(new Identifier("Test String 2"), new Blob(String.valueOf("Test String").getBytes())));
         lists.get(5).add(null);
         helpTester(lists, new NamedValueList());
@@ -498,7 +498,7 @@ public class EncoderCompositeListTest extends AbstractEncoderTest {
         namedValues.add(new NamedValue(new Identifier("Test String 1"), new Time(7654567876544654563L)));
         namedValues.add(null);
         namedValues.add(null);
-        namedValues.add(new NamedValue(null, new UInteger(8765434567654345652L)));
+        namedValues.add(new NamedValue(null, new UInteger(4294967295L)));
         namedValues.add(new NamedValue(new Identifier("Test String 2"), new Blob(String.valueOf("Test String").getBytes())));
         namedValues.add(null);
         List<FileList> lists = new ArrayList<>();
@@ -516,7 +516,7 @@ public class EncoderCompositeListTest extends AbstractEncoderTest {
         lists.get(4).add(FileBuilder.create().name(new Identifier("File 2")).mimeType("Mime Type 1").build());
         lists.get(4).add(FileBuilder.create().name(new Identifier("File 3")).creationDate(new Time(7654345676546485368L)).build());
         lists.get(4).add(FileBuilder.create().name(new Identifier("File 4")).modificationDate(new Time(0L)).build());
-        lists.get(4).add(FileBuilder.create().name(new Identifier("File 5")).size(new ULong(new BigInteger("3940875348956734897562398456782934562398456772834"))).build());
+        lists.get(4).add(FileBuilder.create().name(new Identifier("File 5")).size(new ULong(new BigInteger("18446744073709551615"))).build());
         lists.get(5).add(null);
         lists.get(5).add(FileBuilder.create().name(new Identifier("File 6")).content(new Blob(String.valueOf("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).").getBytes())).build());
         lists.get(5).add(null);
