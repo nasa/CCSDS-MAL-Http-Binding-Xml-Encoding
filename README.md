@@ -1,7 +1,7 @@
 # CCSDS Message Abstraction Layer (MAL) Prototype using Http Binding & XML Encoding
 * Visit CCSDS at [Homepage](https://public.ccsds.org/default.aspx)
 * Visit MAL at [Wiki](https://en.wikipedia.org/wiki/Message_Abstraction_Layer)
-* Visit Http Binding & XML Encoding at [specification](https://public.ccsds.org/Lists/CCSDS%205243R1/524x3r1.pdfgi)
+* Visit HTTP Binding & XML Encoding at [specification](https://public.ccsds.org/Pubs/524x3b1.pdf)
 ## About
 In order to verify the clarity and validity of the specification documents, two independent prototypes are implemented. 
 After both prototypes are completed, they are verified by interoperability tests using a [test bed](https://github.com/esa/CCSDS_MO_TESTBEDS).
